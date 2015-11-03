@@ -80,8 +80,20 @@ class Resource implements ElementInterface
             $array['relationships'] = $relationships;
         }
 
-        if (! empty($this->links)) {
+        $array['links'] = [];
+
+        if (count($this->links)) {
             $array['links'] = $this->links;
+        }
+
+        $serializer_links = $this->serializer->getLinks($this->data);
+
+        if (count($serializer_links)) {
+            $array['links'] = array_merge($array['links'], $serializer_links);
+        }
+
+        if (!count($array['links'])) {
+          unset($array['links']);
         }
 
         return $array;

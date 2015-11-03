@@ -15,6 +15,8 @@ use LogicException;
 
 abstract class AbstractSerializer implements SerializerInterface
 {
+    use LinksTrait;
+
     /**
      * The type.
      *
@@ -63,5 +65,9 @@ abstract class AbstractSerializer implements SerializerInterface
 
             return $relationship;
         }
+    }
+
+    public function getLinks($model) {
+      return [];
     }
 }
