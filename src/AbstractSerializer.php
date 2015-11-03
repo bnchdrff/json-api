@@ -15,8 +15,6 @@ use LogicException;
 
 abstract class AbstractSerializer implements SerializerInterface
 {
-    use LinksTrait;
-
     /**
      * The type.
      *
